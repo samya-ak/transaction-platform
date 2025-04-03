@@ -3,8 +3,8 @@ import { Orders } from 'src/order/order.entity';
 
 @Entity()
 export class Users {
-  @PrimaryGeneratedColumn('uuid')
-  user_id: string;
+  @PrimaryGeneratedColumn('uuid', { name: 'user_id' })
+  userId: string;
 
   @Column({
     type: 'varchar',

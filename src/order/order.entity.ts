@@ -8,29 +8,18 @@ import {
   OneToMany,
   JoinColumn,
 } from 'typeorm';
-
-export enum OrderType {
-  BUY = 'BUY',
-  SELL = 'SELL',
-}
-
-export enum OrderStatus {
-  PENDING = 'PENDING',
-  CANCELLED = 'CANCELLED',
-  PARTIALLY_COMPLETED = 'PARTIALLY_COMPLETED',
-  COMPLETED = 'COMPLETED',
-}
+import { OrderType, OrderStatus } from 'src/types/order';
 
 @Entity()
 export class Orders {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('uuid', { name: 'order_id' })
+  orderId: string;
 
-  @Column({ type: 'int' })
-  total_units: number;
+  @Column({ type: 'int', name: 'total_units' })
+  units: number;
 
-  @Column({ type: 'int' })
-  remaining_units: number;
+  @Column({ type: 'int', name: 'remaining_units' })
+  remainingUnits: number;
 
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   price: number;

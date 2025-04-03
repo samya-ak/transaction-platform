@@ -8,6 +8,7 @@ import { Users } from './user/user.entity';
 import { Orders } from './order/order.entity';
 import { TransactionModule } from './transaction/transaction.module';
 import { Transactions } from './transaction/transaction.entity';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { Transactions } from './transaction/transaction.entity';
       }),
     }),
     UserModule,
+    OrderModule,
     TransactionModule,
   ],
   controllers: [AppController],
