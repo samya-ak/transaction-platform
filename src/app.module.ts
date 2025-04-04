@@ -9,6 +9,7 @@ import { Orders } from './order/order.entity';
 import { TransactionModule } from './transaction/transaction.module';
 import { Transactions } from './transaction/transaction.entity';
 import { OrderModule } from './order/order.module';
+import { BullModule } from '@nestjs/bullmq';
 
 @Module({
   imports: [
@@ -27,6 +28,16 @@ import { OrderModule } from './order/order.module';
         username: configservice.get<string>('DB_USERNAME'),
         password: configservice.get<string>('DB_PASSWORD'),
         database: configservice.get<string>('DB_NAME'),
+      }),
+    }),
+    BullModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configservice: ConfigService) => ({
+        connection: {
+          host: configservice.get<string>('REDIS_HOST'),
+          port: configservice.get<number>('REDIS_PORT'),
+        },
       }),
     }),
     UserModule,
