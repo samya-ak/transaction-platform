@@ -34,21 +34,12 @@ export class OrderProcessor extends WorkerHost {
         await queryRunner.startTransaction();
 
         try {
-          if (order.type === OrderType.BUY.toString()) {
-            await this.processOrder(
-              order,
-              order.type,
-              updatedOrders,
-              newTransactions,
-            );
-          } else {
-            await this.processOrder(
-              order,
-              order.type,
-              updatedOrders,
-              newTransactions,
-            );
-          }
+          await this.processOrder(
+            order,
+            order.type,
+            updatedOrders,
+            newTransactions,
+          );
 
           // Bulk update orders inside the transaction
           await queryRunner.manager.save(Orders, updatedOrders);

@@ -36,7 +36,7 @@ export class OrderService {
         price: createOrderDto.price,
       },
     });
-    console.log('>>>>>>', samePricedOrder);
+
     if (
       samePricedOrder &&
       samePricedOrder.length &&
