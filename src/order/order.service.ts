@@ -6,6 +6,7 @@ import { Orders } from './order.entity';
 import { Repository } from 'typeorm';
 import { Users } from 'src/user/user.entity';
 import { CreateOrderDto } from './order.dto';
+import { OrderType } from 'src/types/order';
 
 @Injectable()
 export class OrderService {
@@ -28,21 +29,40 @@ export class OrderService {
       throw new BadRequestException('User not found');
     }
 
-    // 2. Create Order
+    // 2. Check if same price is already listed for selling
+    const samePricedOrder = await this.orderRepository.find({
+      where: {
+        type: OrderType.SELL,
+        price: createOrderDto.price,
+      },
+    });
+    console.log('>>>>>>', samePricedOrder);
+    if (
+      samePricedOrder &&
+      samePricedOrder.length &&
+      createOrderDto.type === OrderType.SELL
+    ) {
+      throw new BadRequestException(
+        `Order already exists with selling price ${createOrderDto.price}`,
+      );
+    }
+
+    // 3. Create Order
     const order = this.orderRepository.create({
       ...createOrderDto,
       user,
       remainingUnits: createOrderDto.units,
     });
+    const savedOrder = await this.orderRepository.save(order);
 
-    // 3. Add order in queue to trigger background task that try to complete transaction
+    // 4. Add order in queue to trigger background task that try to complete transaction
     await this.ordersQueue.add(
       'process-order',
-      { order },
+      { order: savedOrder },
       { attempts: 3, backoff: 5000 },
     );
 
-    // 4. Return order
-    return await this.orderRepository.save(order);
+    // 5. Return order
+    return savedOrder;
   }
 }

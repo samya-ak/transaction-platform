@@ -3,22 +3,22 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  OneToOne,
+  ManyToOne,
   JoinColumn,
 } from 'typeorm';
 
 @Entity()
 export class Transactions {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('uuid', { name: 'transaction_id' })
+  transactionId: string;
 
-  @OneToOne(() => Orders, { nullable: false })
+  @ManyToOne(() => Orders, { nullable: false })
   @JoinColumn({ name: 'buyer_order_id' })
-  buyer_order: Orders;
+  buyerOrder: Orders;
 
-  @OneToOne(() => Orders, { nullable: false })
+  @ManyToOne(() => Orders, { nullable: false })
   @JoinColumn({ name: 'seller_order_id' })
-  seller_order: Orders;
+  sellerOrder: Orders;
 
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   price: number;

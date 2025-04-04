@@ -34,9 +34,9 @@ export class Orders {
   @JoinColumn({ name: 'user_id' })
   user: Users;
 
-  @OneToMany(() => Transactions, (transaction) => transaction.buyer_order)
-  buyer_transactions: Transactions[];
+  @OneToMany(() => Transactions, (transaction) => transaction.buyerOrder)
+  buyerTransactions: Transactions[];
 
-  @OneToMany(() => Transactions, (transaction) => transaction.seller_order)
-  seller_transactions: Transactions[];
+  @OneToMany(() => Transactions, (transaction) => transaction.sellerOrder)
+  sellerTransactions: Transactions[];
 }
