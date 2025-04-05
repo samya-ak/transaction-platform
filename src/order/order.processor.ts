@@ -118,13 +118,15 @@ export class OrderProcessor extends WorkerHost {
       });
     }
 
-    updatedOrders.push({
-      ...order,
-      remainingUnits: totalUnits,
-      status:
-        totalUnits <= 0
-          ? OrderStatus.COMPLETED
-          : OrderStatus.PARTIALLY_COMPLETED,
-    });
+    if (totalUnits != order.units) {
+      updatedOrders.push({
+        ...order,
+        remainingUnits: totalUnits,
+        status:
+          totalUnits <= 0
+            ? OrderStatus.COMPLETED
+            : OrderStatus.PARTIALLY_COMPLETED,
+      });
+    }
   }
 }

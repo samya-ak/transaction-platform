@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "16c39eb3-fed2-4c18-8589-92da59c48714",
+		"name": "transaction-platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25980946"
+	},
+	"item": [
+		{
+			"name": "root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}",
+					"host": [
+						"{{endpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"SELL\",\n    \"price\": 20,\n    \"units\": 5,\n    \"userId\": \"eae2e421-530a-454c-a203-2c55ab5a58c7\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/orders",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Order",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"SELL\",\n    \"price\": 20,\n    \"units\": 5,\n    \"userId\": \"eae2e421-530a-454c-a203-2c55ab5a58c7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{endpoint}}/orders",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "236"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ec-K2yw2Ucb6+xz+qMcRi75Y/lAYRA\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Apr 2025 12:27:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"71b2aaf4-99c7-4680-809c-8355c943a4c5\",\n    \"units\": 5,\n    \"remainingUnits\": 5,\n    \"price\": 20,\n    \"type\": \"SELL\",\n    \"status\": \"PENDING\",\n    \"user\": {\n        \"user_id\": \"eae2e421-530a-454c-a203-2c55ab5a58c7\",\n        \"email\": \"abc@gmail.com\",\n        \"firstname\": \"John\",\n        \"lastname\": \"Doe\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"abc@gmail.com\",\n    \"firstname\": \"John\",\n    \"lastname\": \"Doe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endpoint}}/users",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "110"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6e-jKwyRIYzbALBRwcvJkcktdP1E/s\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Apr 2025 11:59:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user_id\": \"eae2e421-530a-454c-a203-2c55ab5a58c7\",\n    \"email\": \"abc@gmail.com\",\n    \"firstname\": \"John\",\n    \"lastname\": \"Doe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get User Orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/users/b1a3e330-06d8-4c1a-b294-d07582dd1a1e/orders",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"users",
+						"b1a3e330-06d8-4c1a-b294-d07582dd1a1e",
+						"orders"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get User Orders",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/users/b1a3e330-06d8-4c1a-b294-d07582dd1a1e/orders",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"users",
+								"b1a3e330-06d8-4c1a-b294-d07582dd1a1e",
+								"orders"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "250"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"fa-nkSpfYHmsEa6CdNSKY7eIFi6rRc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 04 Apr 2025 14:11:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"orderId\": \"9d9f0500-86ae-4daf-ba74-3a30fac9cd47\",\n        \"units\": 30,\n        \"remainingUnits\": 0,\n        \"price\": \"10.00\",\n        \"type\": \"BUY\",\n        \"status\": \"COMPLETED\",\n        \"user\": {\n            \"userId\": \"b1a3e330-06d8-4c1a-b294-d07582dd1a1e\",\n            \"email\": \"jane@gmail.com\",\n            \"firstname\": \"Jane\",\n            \"lastname\": \"Doe\"\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get User Transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{endpoint}}/users/b1a3e330-06d8-4c1a-b294-d07582dd1a1e/transactions",
+					"host": [
+						"{{endpoint}}"
+					],
+					"path": [
+						"users",
+						"b1a3e330-06d8-4c1a-b294-d07582dd1a1e",
+						"transactions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get User Transactions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{endpoint}}/users/b1a3e330-06d8-4c1a-b294-d07582dd1a1e/transactions",
+							"host": [
+								"{{endpoint}}"
+							],
+							"path": [
+								"users",
+								"b1a3e330-06d8-4c1a-b294-d07582dd1a1e",
+								"transactions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1214"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4be-ovXsxN0wrGJcBLKNGbXxMQyG/w4\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 04 Apr 2025 14:29:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"transactionId\": \"5d3421a9-25c9-4aac-901d-32ff1aba332f\",\n        \"buyerOrder\": {\n            \"orderId\": \"9d9f0500-86ae-4daf-ba74-3a30fac9cd47\",\n            \"units\": 30,\n            \"remainingUnits\": 0,\n            \"price\": \"10.00\",\n            \"type\": \"BUY\",\n            \"status\": \"COMPLETED\",\n            \"user\": {\n                \"userId\": \"b1a3e330-06d8-4c1a-b294-d07582dd1a1e\",\n                \"email\": \"jane@gmail.com\",\n                \"firstname\": \"Jane\",\n                \"lastname\": \"Doe\"\n            }\n        },\n        \"sellerOrder\": {\n            \"orderId\": \"81da21b6-71b9-4f83-957e-d8502938453c\",\n            \"units\": 20,\n            \"remainingUnits\": 0,\n            \"price\": \"9.00\",\n            \"type\": \"SELL\",\n            \"status\": \"COMPLETED\",\n            \"user\": {\n                \"userId\": \"251ee970-55f9-4fce-90fe-fa367029bc15\",\n                \"email\": \"b@gmail.com\",\n                \"firstname\": \"B\",\n                \"lastname\": \"B\"\n            }\n        },\n        \"price\": \"9.00\",\n        \"units\": 20\n    },\n    {\n        \"transactionId\": \"5e18cf6e-4ad3-4747-ac77-2f062424c7bf\",\n        \"buyerOrder\": {\n            \"orderId\": \"9d9f0500-86ae-4daf-ba74-3a30fac9cd47\",\n            \"units\": 30,\n            \"remainingUnits\": 0,\n            \"price\": \"10.00\",\n            \"type\": \"BUY\",\n            \"status\": \"COMPLETED\",\n            \"user\": {\n                \"userId\": \"b1a3e330-06d8-4c1a-b294-d07582dd1a1e\",\n                \"email\": \"jane@gmail.com\",\n                \"firstname\": \"Jane\",\n                \"lastname\": \"Doe\"\n            }\n        },\n        \"sellerOrder\": {\n            \"orderId\": \"9c9b814f-ca24-450e-97cf-01b2e1b94401\",\n            \"units\": 50,\n            \"remainingUnits\": 40,\n            \"price\": \"10.00\",\n            \"type\": \"SELL\",\n            \"status\": \"PARTIALLY_COMPLETED\",\n            \"user\": {\n                \"userId\": \"8dded2fb-eedb-4ef7-944b-acff194fb71b\",\n                \"email\": \"a@gmail.com\",\n                \"firstname\": \"A\",\n                \"lastname\": \"A\"\n            }\n        },\n        \"price\": \"10.00\",\n        \"units\": 10\n    }\n]"
+				}
+			]
+		}
+	]
+}
